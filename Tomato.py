@@ -42,38 +42,46 @@ class TomatoBush():
         print('All tomatos have harvested!')
 
 
+class Gardener():
+    def __init__(self, name):
+        self.name = name
+
+    def harvest(self):
+        print(f'{self.name} harvesting')
+
+    def work(self):
+        bush = TomatoBush(tom_at_bush)
+
+        for _ in range(tom_at_bush):
+            tomato = Tomato(random.randint(1, 3), states)
+            bush.tomatoes.append(tomato)
+
+        rounds = 1
+        while True:
+            print(f'Round {rounds}')
+            print('_____________')
+            if bush.all_are_ripe():
+                self.harvest()
+                bush.give_away_all()
+                break
+            else:
+                bush.grow_all()
+            rounds += 1
+        Gardener.count_rounds = rounds
+
+
+
+
+    @staticmethod
+    def knowledge_base():
+        print(f'fruits on the plant - {tom_at_bush}')
+        print(f'stages for grow - {Gardener.count_rounds}')
 
 states = {1: 'bloom', 2: 'green', 3: 'red-green', 4: "ripe"}
-
-
 tom_at_bush = 3
-bush = TomatoBush(tom_at_bush)
+gardener = Gardener('Vasia')
+gardener.work()
 
-for _ in range(tom_at_bush):
-    tomato = Tomato(random.randint(1, 3), states)
-    bush.tomatoes.append(tomato)
-
-round = 1
-while True:
-    print(f'Round {round}')
-    print('_____________')
-    if bush.all_are_ripe():
-        bush.give_away_all()
-        break
-    else:
-        bush.grow_all()
-    round += 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print()
+print('knowledge_base:')
+gardener.knowledge_base()
